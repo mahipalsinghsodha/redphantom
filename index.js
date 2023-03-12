@@ -1,8 +1,8 @@
 const express  = require('express');
-const port = 8000;
+const dotenv = require('dotenv');
 const appRoute = require('./routes/index');
 const app = express();
-const db = require('./config/mongoose');
+const connectDB = require('./config/mongoose');
 
 //middleware
 app.use(express.urlencoded());
@@ -14,13 +14,18 @@ app.set('views', 'views');
 
 app.use(express.json());
 
+dotenv.config( { path : 'config.env'} )
+const PORT = process.env.PORT;
+
+connectDB();
+
 /** routes */
 app.use('/', appRoute);
 
 
-app.listen(port,(error)=>{
+app.listen(PORT,(error)=>{
     if(error){
-        console.log("Error while runing the server at port: " ,port)
+        console.log(`Error while runing the server at port:${port}`)
         return;
     }
      console.log('Server is Running');
