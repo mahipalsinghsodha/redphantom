@@ -87,8 +87,8 @@ module.exports.signTest = async (req, res) => {
 /** send mail from real gmail account */
 module.exports.getbill = (req, res) => {
 
-  const { userEmail } = req.body;
-  console.log(userEmail);
+  const { email:userEmail } = req.body;
+  console.log("User message",userEmail);
 
   let config = {
       service: 'gmail',
@@ -136,10 +136,11 @@ module.exports.getbill = (req, res) => {
 
   transporter.sendMail(message).then(() => {
       return res.status(201).json({
-          msg: "you should receive an email"
+          msg: "you should receive an email",
+
       })
   }).catch(error => {
-      return res.status(500).json({ error })
+      return res.status(500).json({ error,Hello:"Hey" });
   })
 
   // res.status(201).json("getBill Successfully...!");
