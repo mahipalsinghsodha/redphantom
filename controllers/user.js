@@ -87,8 +87,7 @@ module.exports.signTest = async (req, res) => {
 /** send mail from real gmail account */
 module.exports.getbill = (req, res) => {
 
-  const { email:userEmail } = req.body;
-  console.log("User message",userEmail);
+  const { email,query} = req.body;
 
   let config = {
       service: 'gmail',
@@ -115,7 +114,7 @@ module.exports.getbill = (req, res) => {
           table: {
               data: [
                   {
-                      message: message,
+                      message: query,
                       description: "Please wait for some days i will back call you",
                       phone_no: "7665306403",
                   }
@@ -129,7 +128,7 @@ module.exports.getbill = (req, res) => {
 
   let message = {
       from: EMAIL,
-      to: userEmail,
+      to: email,
       subject: "Place Order",
       html: mail
   }
