@@ -110,14 +110,14 @@ module.exports.getbill = (req, res) => {
 
   let response = {
       body: {
-          name: "Abhishek",
-          intro: "Your bill has arrived!",
+          name: "Mahipal Singh",
+          intro: "Your COntact Details has arrived!",
           table: {
               data: [
                   {
-                      item: "Nodemailer Stack Book",
-                      description: "A Backend application",
-                      price: "$10.99",
+                      message: message,
+                      description: "Please wait for some days i will back call you",
+                      phone_no: "7665306403",
                   }
               ]
           },
